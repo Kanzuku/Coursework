@@ -1,0 +1,49 @@
+table Educational_programs {
+  program_ID integer 
+  program_name varchar(255)
+  users_level timestamp
+}
+
+table Disciplines {
+  disciplines_ID integer 
+  disciplines_name varchar(255)
+  description varchar(255)
+  number_of_hours integer
+  semester integer
+  educational_programs_ID integer
+  course integer 
+  created_at timestamp
+  foreign key (educational_programs_ID) 
+}
+
+table Teachers {
+  teachers_ID integer 
+  teacher_lastname varchar(255)
+  teacher_name varchar(255)
+  position integer
+  discipline_ID integer
+  foreign key (discipline_ID) 
+}
+
+table Students {
+  students_ID integer 
+  student_surname varchar(255)
+  student_name varchar(255)
+  group_number integer
+  course integer
+  educational_programs_ID integer
+  grade integer
+  created_at timestamp
+  discipline_ID integer
+  foreign key (discipline_ID)
+}
+
+table Schedule_of_classes {
+  schedule_ID integer
+  day_of_week integer
+  start_time integer
+  finish_time integer
+  discipline_ID integer
+  class_number integer
+  foreign key (discipline_ID)
+}
