@@ -1,0 +1,11 @@
+Тема: "Робочі навчальні програми дисциплін"
+
+Таблиця Programs (освітні програми) містить інформацію про наявні освітні програми дисциплін на відповідних спеціальностях. У цій таблиці є поля: program_id, program_name, semester, obligation, specialty_id.
+
+Таблиця Disciplines (дисципліни) містить та описує потрібні дисципліни. У цій таблиці є поля: discipline_id, discipline_name, hours, instructor_id, program_id.
+
+Таблиця Faculties (факультети) містить інформацію про факультети. У цій таблиці є поля: faculty_id, faculty_name.
+
+Таблиця Instructors (викладачі) містить інформацію про викладачів конкретних кафедр. У цій таблиці є поля: instructor_id, instructor_name, phone_number, email, faculty_id.
+
+Таблиця Specialties (спеціальності) містить інформацію про спеціальності на факультетах. У цій таблиці є поля: specialty_id, specialty_name, faculty_id.
