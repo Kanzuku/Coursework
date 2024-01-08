@@ -1,49 +1,40 @@
-table Educational_programs {
-  program_ID integer 
-  program_name varchar(255)
-  users_level timestamp
+Table Programs {
+    program_id integer 
+    program_name varchar
+    semester integer
+    obligation boolean
+    specialty_id integer 
 }
 
-table Disciplines {
-  disciplines_ID integer 
-  disciplines_name varchar(255)
-  description varchar(255)
-  number_of_hours integer
-  semester integer
-  educational_programs_ID integer
-  course integer 
-  created_at timestamp
-  foreign key (educational_programs_ID) 
+Table Disciplines {
+    discipline_id integer
+    discipline_name varchar
+    hours int
+    instructor_id integer
+    program_id integer
+} 
+
+Table Faculties {
+    faculty_id integer
+    faculty_name varchar
 }
 
-table Teachers {
-  teachers_ID integer 
-  teacher_lastname varchar(255)
-  teacher_name varchar(255)
-  position integer
-  discipline_ID integer
-  foreign key (discipline_ID) 
+Table Instructors {
+    instructor_id integer
+    instructor_name varchar
+    phone_number integer
+    email varchar
+    faculty_id integer
 }
 
-table Students {
-  students_ID integer 
-  student_surname varchar(255)
-  student_name varchar(255)
-  group_number integer
-  course integer
-  educational_programs_ID integer
-  grade integer
-  created_at timestamp
-  discipline_ID integer
-  foreign key (discipline_ID)
+Table Specialties {
+    specialty_id integer
+    specialty_name varchar
+    faculty_id integer
 }
 
-table Schedule_of_classes {
-  schedule_ID integer
-  day_of_week integer
-  start_time integer
-  finish_time integer
-  discipline_ID integer
-  class_number integer
-  foreign key (discipline_ID)
-}
+Ref: Specialties.specialty_id - Programs.specialty_id
+Ref: Programs.program_id - Disciplines.program_id
+Ref: Faculties.faculty_id > Specialties.faculty_id
+Ref: Instructors.instructor_id - Disciplines.instructor_id
+Ref: Faculties.faculty_id > Instructors.faculty_id
